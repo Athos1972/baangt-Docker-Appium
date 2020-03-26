@@ -27,10 +27,10 @@ RUN apt-get update -q && \
     dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install && \
     rm google-chrome-stable_current_amd64.deb && \
     apt-get autoclean -y && \
-    apt-get autoremove -y && \
-    apt-get clean && \
+    apt-get autoremove -y && \ 
     apt-get -qqy install nodejs\
-    apt install npm\			
+    apt install npm\	
+    apt-get clean && \		
     rm -rf /var/lib/apt/lists/*
 
 # Install Baangt
