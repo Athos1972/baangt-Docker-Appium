@@ -28,18 +28,18 @@ RUN apt-get update -q && \
     dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install && \
     rm google-chrome-stable_current_amd64.deb && \
     apt-get -qqy install nodejs && \
-    apt install npm	
+    apt-get install -y npm	
 
 # Install Baangt
 RUN git clone -b master --single-branch https://gogs.earthsquad.global/athos/baangt --branch master && \
-    pip3 install -r baangt/requirements.txt \
+    pip3 install -r baangt/requirements.txt 
     
 #=============================================
 # Install Android SDK's and Platform tools
 #=============================================
 
-RUN export DEBIAN_FRONTEND=noninteractive \
-  && apt-get -y --no-install-recommends install \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get -y --no-install-recommends install \
     libc6-i386 \
     lib32stdc++6 \
     lib32gcc1 \
