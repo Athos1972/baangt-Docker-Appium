@@ -1,12 +1,12 @@
 
-REPOSITORY?=baangt/baangt-vnc
-NAME?=baangtVNC
+REPOSITORY?=baangt/baangt-appium-vnc
+NAME?=baangtAppiumVNC
 TAG?=latest
 
 DOCKER = docker
 
 VERSION ?= $(shell git describe --tags)
-GIT_VERSION ?= $(shell git --no-pager describe --tags --always --dirty)
+GIT_VERSION ?= $(s≈hell git --no-pager describe --tags --always --dirty)
 GIT_DATE ?= $(shell git --no-pager show --date=short --format="%ad" --name-only | head -n 1 | awk '{print $1;}')
 PROJECT_TAG ?= $(shell git describe --abbrev=0 --tags)
 BUILD_DATE ?= $(shell date "+%Y%m%d-%H%M")

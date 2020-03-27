@@ -13,6 +13,7 @@ RUN dpkg-reconfigure -f noninteractive tzdata
 # Install packages
 RUN apt-get update -q && \
 	export DEBIAN_FRONTEND=noninteractive && \
+    dpkg --add-architecture i386 && \
     apt-get install -y --no-install-recommends software-properties-common && \
     add-apt-repository universe && \
     apt-get update -q && \
@@ -26,15 +27,11 @@ RUN apt-get update -q && \
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install && \
     rm google-chrome-stable_current_amd64.deb && \
-    apt-get autoclean -y && \
-    apt-get autoremove -y && \ 
-    apt-get -qqy install nodejs\
-    apt install npm\	
-    apt-get clean && \		
-    rm -rf /var/lib/apt/lists/*
+    apt-get -qqy install nodejs && \
+    apt install npm	
 
 # Install Baangt
-RUN git clone https://gogs.earthsquad.global/athos/baangt && \
+RUN git clone -b master --single-branch https://gogs.earthsquad.global/athos/baangt --branch master && \
     pip3 install -r baangt/requirements.txt \
     
 #=============================================
@@ -42,8 +39,6 @@ RUN git clone https://gogs.earthsquad.global/athos/baangt && \
 #=============================================
 
 RUN export DEBIAN_FRONTEND=noninteractive \
-  && dpkg --add-architecture i386 \
-  && apt-get update -y \
   && apt-get -y --no-install-recommends install \
     libc6-i386 \
     lib32stdc++6 \
