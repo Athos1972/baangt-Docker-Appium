@@ -48,7 +48,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     wget \
     curl \
     unzip \
-    openjdk-7-jre-headless \
+    ca-certificates \
+    tzdata \
+    libqt5webkit5 \
+    libgconf-2-4 \
+    openjdk-8-jdk \
+    xvfb \
+    gnupg \
   && wget --progress=dot:giga -O /opt/adt.tgz \
     https://dl.google.com/android/android-sdk_r24.3.4-linux.tgz \
   && tar xzf /opt/adt.tgz -C /opt \
@@ -61,7 +67,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 # Set up PATH for Android Tools
 #================================
 
-ENV PATH $PATH:/opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools
+ENV PATH $PATH:/opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools:/usr/lib/jvm/java-8-openjdk-amd64/jre
 ENV ANDROID_HOME /opt/android-sdk-linux
 
 #==========================
